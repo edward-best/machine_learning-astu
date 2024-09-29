@@ -1,7 +1,6 @@
 import pandas
 
-data = pandas.read_csv('titanic.csv')
-men = data['Name'][data['Name'].str.contains("|".join(["Mr ", "Master", "Sig"]))].count()
-women = data['Name'][data['Name'].str.contains("|".join(["Miss", "Mrs", "Mme"]))].count()
+data = pandas.read_csv('Титаник.csv', encoding='utf-16-le', sep=';')
+counted = data['Пол'].value_counts()
 
-print(f"На корабле плавало {men} мужчин, {women} женщин и {data['Name'].count() - men - women} неопознанного рода")
+print(f"На корабле плыло {counted['мужской']} мужчин и {counted['женский']} женщин")
